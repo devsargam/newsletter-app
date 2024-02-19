@@ -1,0 +1,63 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(uuid())
+  username   String
+  email      String   @unique
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  newsletters Newsletter[]
+}
+
+model Newsletter {
+  id        String   @id @default(uuid())
+  title     String
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  createdBy User   @relation(fields: [userId], references: [id])
+  userId    String
+}
+
+model Email {
+  id      String   @id @default(uuid())
+  subject String
+  content String
+  sent_at DateTime @default(now())
+
+  emailSubscribers EmailSubscriber[]
+
+  analytics   Analytics?
+  analyticsId String
+}
+
+model EmailSubscriber {
+  id String @id @default(uuid())
+  email   String
+  opened  Boolean @default(false)
+  clicked Boolean @default(false)
+
+  subscribedTo Email  @relation(fields: [emailId], references: [id])
+  emailId      String
+}
+
+model Analytics {
+  id          String @id @default(uuid())
+  open_count  Int    @default(0)
+  click_count Int    @default(0)
+
+  email   Email  @relation(fields: [emailId], references: [id])
+  emailId String @unique
+}
