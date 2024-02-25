@@ -15,8 +15,7 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { useToast } from "@/components/ui/use-toast"
-
+import { useToast } from '@/components/ui/use-toast';
 
 const signupFormSchema = z.object({
   username: z.string().min(2).max(50),
@@ -25,7 +24,7 @@ const signupFormSchema = z.object({
 });
 
 export function SignupForm() {
-  const {toast} = useToast();
+  const { toast } = useToast();
 
   const form = useForm<z.infer<typeof signupFormSchema>>({
     resolver: zodResolver(signupFormSchema),
@@ -44,18 +43,17 @@ export function SignupForm() {
 
     const data = await res.json();
 
-    console.log(data.message)
-    if(res.status === 201) {
+    if (res.status === 201) {
       toast({
         title: data.message,
-        description: "Go to login to access the site",
-      })
+        description: 'Go to login to access the site',
+      });
     } else {
       toast({
         title: data.error,
-        description: "Something went wrong. Uh oh!",
-        variant: "destructive"
-      })
+        description: 'Something went wrong. Uh oh!',
+        variant: 'destructive',
+      });
     }
   }
 
@@ -100,7 +98,7 @@ export function SignupForm() {
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type='password' placeholder="sargam" {...field} />
+                    <Input type="password" placeholder="sargam" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

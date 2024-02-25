@@ -9,7 +9,6 @@ export async function MainNav({
   ...props
 }: React.HTMLAttributes<HTMLElement>) {
   const session = await getServerSession();
-  console.log(session);
 
   return (
     <nav
@@ -29,26 +28,34 @@ export async function MainNav({
         <div className="flex items-center space-x-5">
           <Link
             href="/login"
-            className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary"
+            className="text-lg font-medium text-primary-foreground transition-colors hover:"
           >
             Login
           </Link>
           <Link
             href="/register"
-            className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary"
+            className="text-lg font-medium text-primary-foreground transition-colors hover:"
           >
             Register
           </Link>
         </div>
       ) : (
         <div className="flex items-center space-x-5">
-          <div>Signed in as: {session.user?.email}</div>
           <Link
-            href="/logout"
-            className="text-lg font-medium text-muted-foreground transition-colors hover:text-primary"
+            href="/create"
+            className="text-lg font-medium text-primary-foreground transition-colors hover:"
           >
-            <Logout />
+            Create
           </Link>
+          <Link
+            href="/profile"
+            className="text-lg font-medium text-primary-foreground transition-colors hover:text-secondary-foreground"
+          >
+            Profile
+          </Link>
+
+          <div>Signed in as: {session.user?.email}</div>
+          <Logout />
         </div>
       )}
     </nav>

@@ -17,6 +17,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { useToast } from '@/components/ui/use-toast';
 import { signIn } from 'next-auth/react';
+import { useRouter } from 'next/navigation';
 
 const signinFormSchema = z.object({
   email: z.string().email(),
@@ -25,6 +26,7 @@ const signinFormSchema = z.object({
 
 export function SigninForm() {
   const { toast } = useToast();
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof signinFormSchema>>({
     resolver: zodResolver(signinFormSchema),
@@ -40,7 +42,22 @@ export function SigninForm() {
       password: values.password,
       redirect: false,
     });
-    console.log(res);
+    if (!res || res.error) {
+      return toast({
+        title: 'Uh oh!',
+        description: 'Something went wrong!!!',
+        variant: 'destructive',
+      });
+    }
+
+    if (res.ok) {
+      toast({
+        title: 'Login Success',
+        description: 'Navigate to your profile to see all actions',
+      });
+      router.push('/');
+      return router.refresh();
+    }
   }
 
   return (
