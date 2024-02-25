@@ -1,7 +1,11 @@
 import NextAuth from 'next-auth/next';
 import CredentialsProvider from 'next-auth/providers/credentials';
+import db from '@/db';
 
 const handler = NextAuth({
+  session: {
+    strategy: 'jwt',
+  },
   providers: [
     CredentialsProvider({
       // The name to display on the sign in form (e.g. "Sign in with...")
@@ -15,17 +19,25 @@ const handler = NextAuth({
         password: {},
       },
       async authorize(credentials, req) {
-        // Add logic here to look up the user from the credentials supplied
-        const user = { id: '1', name: 'J Smith', email: 'jsmith@example.com' };
+        const userFromDb = await db.user.findFirst({
+          where: { email: credentials?.email },
+        });
 
-        if (user) {
-          return user;
-        } else {
+        if (!userFromDb) {
           return null;
         }
+
+        if (userFromDb.passwordHash !== credentials?.password) {
+          return null;
+        }
+
+        return {
+          id: userFromDb.id,
+          email: userFromDb.email,
+        };
       },
     }),
   ],
 });
 
-export { handler as GET, handler as PORT };
+export { handler as GET, handler as POST };
