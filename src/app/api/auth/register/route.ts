@@ -14,7 +14,10 @@ export async function POST(request: Request) {
         passwordHash: password,
       },
     });
-    return NextResponse.json({ message: 'Account created sucessfully' }, {status: 201});
+    return NextResponse.json(
+      { message: 'Account created sucessfully' },
+      { status: 201 },
+    );
   } catch (e) {
     if (e instanceof PrismaClientKnownRequestError) {
       return NextResponse.json(

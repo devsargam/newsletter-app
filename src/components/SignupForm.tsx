@@ -59,20 +59,20 @@ export function SignupForm() {
 
   return (
     <>
-      <main className="flex justify-center w-full">
+      <main className='flex justify-center w-full'>
         <Form {...form}>
           <form
             onSubmit={form.handleSubmit(onSubmit)}
-            className="space-y-8 max-w-lg w-full"
+            className='space-y-8 max-w-lg w-full'
           >
             <FormField
               control={form.control}
-              name="email"
+              name='email'
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Email</FormLabel>
                   <FormControl>
-                    <Input placeholder="srgm@gmail.com" {...field} />
+                    <Input placeholder='srgm@gmail.com' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -80,12 +80,12 @@ export function SignupForm() {
             />
             <FormField
               control={form.control}
-              name="username"
+              name='username'
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Username</FormLabel>
                   <FormControl>
-                    <Input placeholder="sargam" {...field} />
+                    <Input placeholder='sargam' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -93,18 +93,18 @@ export function SignupForm() {
             />
             <FormField
               control={form.control}
-              name="password"
+              name='password'
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Password</FormLabel>
                   <FormControl>
-                    <Input type="password" placeholder="sargam" {...field} />
+                    <Input type='password' placeholder='sargam' {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit">Submit</Button>
+            <Button type='submit'>Submit</Button>
           </form>
         </Form>
       </main>

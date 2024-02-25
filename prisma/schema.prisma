@@ -11,13 +11,13 @@ datasource db {
 }
 
 model User {
-  id         String   @id @default(uuid())
-  username   String
-  email      String   @unique
+  id           String   @id @default(uuid())
+  username     String
+  email        String   @unique
   passwordHash String
-  uniqueHash String @default(uuid())
-  created_at DateTime @default(now())
-  updated_at DateTime @updatedAt
+  uniqueHash   String   @default(uuid())
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
 
   newsletters Newsletter[]
 }
@@ -47,11 +47,11 @@ model Email {
   analyticsId String
 
   newsletters Newsletter @relation(fields: [emailId], references: [id])
-  emailId   String
+  emailId     String
 }
 
 model EmailSubscriber {
-  id String @id @default(uuid())
+  id      String  @id @default(uuid())
   email   String
   opened  Boolean @default(false)
   clicked Boolean @default(false)

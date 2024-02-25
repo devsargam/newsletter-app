@@ -19,37 +19,37 @@ export async function MainNav({
       {...props}
     >
       <Link
-        href="/"
-        className="text-lg font-medium transition-colors hover:text-white"
+        href='/'
+        className='text-lg font-medium transition-colors hover:text-white'
       >
         Home
       </Link>
       {!session ? (
-        <div className="flex items-center space-x-5">
+        <div className='flex items-center space-x-5'>
           <Link
-            href="/login"
-            className="text-lg font-medium text-primary-foreground transition-colors hover:"
+            href='/login'
+            className='text-lg font-medium text-primary-foreground transition-colors hover:'
           >
             Login
           </Link>
           <Link
-            href="/register"
-            className="text-lg font-medium text-primary-foreground transition-colors hover:"
+            href='/register'
+            className='text-lg font-medium text-primary-foreground transition-colors hover:'
           >
             Register
           </Link>
         </div>
       ) : (
-        <div className="flex items-center space-x-5">
+        <div className='flex items-center space-x-5'>
           <Link
-            href="/create"
-            className="text-lg font-medium text-primary-foreground transition-colors hover:"
+            href='/create'
+            className='text-lg font-medium text-primary-foreground transition-colors hover:'
           >
             Create
           </Link>
           <Link
-            href="/profile"
-            className="text-lg font-medium text-primary-foreground transition-colors hover:text-secondary-foreground"
+            href='/profile'
+            className='text-lg font-medium text-primary-foreground transition-colors hover:text-secondary-foreground'
           >
             Profile
           </Link>

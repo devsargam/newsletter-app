@@ -22,19 +22,19 @@ export async function Profile() {
   });
 
   return (
-    <div className="flex flex-col px-4 lg:px-6">
-      <div className="space-y-2 flex justify-center">
-        <div className="flex flex-col items-center py-5 space-x-4">
-          <h1 className="text-4xl capitalize font-bold">
+    <div className='flex flex-col px-4 lg:px-6'>
+      <div className='space-y-2 flex justify-center'>
+        <div className='flex flex-col items-center py-5 space-x-4'>
+          <h1 className='text-4xl capitalize font-bold'>
             {session?.user?.name}
           </h1>
-          <p className="text-lg text-gray-500 dark:text-gray-400">
+          <p className='text-lg text-gray-500 dark:text-gray-400'>
             Welcome to my newsletter. Here you will find all my latest articles
             and thoughts.
           </p>
         </div>
       </div>
-      <div className="container border place-items-center p-5 sm:p-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+      <div className='container border place-items-center p-5 sm:p-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
         {newsletters.map((newsletter) => {
           const { id, content, createdAt, title } = newsletter;
           return (
