@@ -1,0 +1,19 @@
+version: '3'
+services:
+  db:
+    image: postgres:9.6
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: db
+    ports:
+      - 5432:5432
+    volumes:
+      - ./postgres-data:/var/lib/postgresql/data
+    networks:
+      - postgres-db
+volumes:
+  postgres-data:
+networks:
+  postgres-db:
