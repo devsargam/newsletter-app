@@ -8,6 +8,7 @@ import {
 import { Button } from './ui/button';
 import { FileEditIcon, FilePlus, FileX2 } from 'lucide-react';
 import Link from 'next/link';
+import { deleteNewsletter } from '@/actions';
 
 export function EditNewsletter() {
   return (
@@ -27,12 +28,19 @@ export function EditNewsletter() {
   );
 }
 
-export function DeleteNewsletter() {
+export function DeleteNewsletter({ id }: { id: string }) {
   return (
     <TooltipProvider>
       <Tooltip>
         <TooltipTrigger asChild>
-          <Button className='rounded-full' size='icon' variant='default'>
+          <Button
+            className='rounded-full'
+            size='icon'
+            variant='default'
+            onClick={() => {
+              deleteNewsletter(id);
+            }}
+          >
             <FileX2 className='w-4 h-4' />
             <span className='sr-only'>Delete</span>
           </Button>

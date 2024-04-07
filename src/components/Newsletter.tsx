@@ -37,7 +37,7 @@ export function Newsletter({ id, content, createdAt, title }: NewsletterProps) {
         <p className='text-sm text-gray-800'>{timeAgo(createdAt)}</p>
         <div className='gap-2 flex'>
           <EditNewsletter />
-          <DeleteNewsletter />
+          <DeleteNewsletter id={id} />
         </div>
       </div>
     </div>

@@ -8,9 +8,9 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useFormState } from 'react-dom';
-import { createNewsletter } from '@/app/actions';
+import { createNewsletter } from '@/actions';
 import { useToast } from './ui/use-toast';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Textarea } from './ui/textarea';
 import { CheckCircle2 } from 'lucide-react';
 
@@ -32,6 +32,7 @@ function Errors(props: { errors?: string[] }) {
 }
 
 export function CreateNewsletter({ email }: { email: string }) {
+  const formRef = useRef<HTMLFormElement>(null);
   const [state, formAction] = useFormState(createNewsletter, initialState);
   const { toast } = useToast();
 
@@ -54,7 +55,15 @@ export function CreateNewsletter({ email }: { email: string }) {
       <p className='text-sm text-gray-500 dark:text-gray-400 text-center'>
         Create a newsletter expand your voice among millions
       </p>
-      <form className='grid w-full gap-4' action={formAction}>
+      <form
+        className='grid w-full gap-4'
+        ref={formRef}
+        action={(payload) => {
+          formAction(payload);
+          if (state.error) return;
+          formRef.current?.reset();
+        }}
+      >
         <div className='grid w-full gap-0.5'>
           <Label htmlFor='title'>Title</Label>
           <Input
