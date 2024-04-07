@@ -11,6 +11,8 @@ import { useFormState } from 'react-dom';
 import { createNewsletter } from '@/app/actions';
 import { useToast } from './ui/use-toast';
 import { useEffect } from 'react';
+import { Textarea } from './ui/textarea';
+import { CheckCircle2 } from 'lucide-react';
 
 const initialState = {
   error: false,
@@ -46,27 +48,34 @@ export function CreateNewsletter({ email }: { email: string }) {
 
   return (
     <div className='w-full max-w-sm space-y-4 border border-gray-200 rounded-lg p-4'>
-      <h3 className='text-lg font-bold'>Create a new newsletter</h3>
-      {JSON.stringify(state.message)};
-      <p className='text-sm text-gray-500 dark:text-gray-400'>
-        Sign up to receive the latest news and updates.
+      <h3 className='text-2xl font-bold text-center'>
+        Create a new newsletter
+      </h3>
+      <p className='text-sm text-gray-500 dark:text-gray-400 text-center'>
+        Create a newsletter expand your voice among millions
       </p>
       <form className='grid w-full gap-4' action={formAction}>
         <div className='grid w-full gap-0.5'>
           <Label htmlFor='title'>Title</Label>
-          <Input id='title' name='title' placeholder='Enter your title' />
+          <Input
+            id='title'
+            name='title'
+            placeholder='Enter your title'
+            className='mt-1'
+          />
         </div>
         <div className='grid w-full gap-0.5'>
           <Label htmlFor='content'>Content</Label>
-          <Input
+          <Textarea
             id='content'
             name='content'
             placeholder='Enter your description'
+            className='mt-1'
           />
         </div>
         <input type='hidden' value={email} id='email' name='email' />
-        <Button className='w-full' type='submit'>
-          Subscribe
+        <Button className='w-full text-xl font-medium' type='submit'>
+          Create <CheckCircle2 className='mx-1' />
         </Button>
       </form>
     </div>

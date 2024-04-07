@@ -7,6 +7,15 @@ import { redirect } from 'next/navigation';
 import { CreateNewsletter, Newsletter } from './Newsletter';
 import db from '@/db';
 
+interface INewsletter {
+  id: string;
+  title: string;
+  content: string;
+  createdAt: Date;
+  updatedAt: Date;
+  userId: string;
+}
+
 export async function Profile() {
   const session = await getServerSession();
   if (!session?.user) {
@@ -35,7 +44,7 @@ export async function Profile() {
         </div>
       </div>
       <div className='container border place-items-center p-5 sm:p-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
-        {newsletters.map((newsletter) => {
+        {newsletters.map((newsletter: INewsletter) => {
           const { id, content, createdAt, title } = newsletter;
           return (
             <Newsletter

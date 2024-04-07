@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { getServerSession } from 'next-auth';
 import { Logout } from './Logout';
+import { Home } from 'lucide-react';
 
 export async function MainNav({
   className,
@@ -22,7 +23,7 @@ export async function MainNav({
         href='/'
         className='text-lg font-medium transition-colors hover:text-white'
       >
-        Home
+        <Home size={30} />
       </Link>
       {!session ? (
         <div className='flex items-center space-x-5'>
@@ -43,13 +44,13 @@ export async function MainNav({
         <div className='flex items-center space-x-5'>
           <Link
             href='/create'
-            className='text-lg font-medium text-primary-foreground transition-colors hover:'
+            className='text-lg font-medium text-primary-foreground transition-colors hover:text-gray-300'
           >
             Create
           </Link>
           <Link
             href='/profile'
-            className='text-lg font-medium text-primary-foreground transition-colors hover:text-secondary-foreground'
+            className='text-lg font-medium text-primary-foreground transition-colors hover:text-gray-300'
           >
             Profile
           </Link>

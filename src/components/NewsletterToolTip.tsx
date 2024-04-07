@@ -6,7 +6,8 @@ import {
   TooltipTrigger,
 } from '@radix-ui/react-tooltip';
 import { Button } from './ui/button';
-import { FileEditIcon, FilePlus } from 'lucide-react';
+import { FileEditIcon, FilePlus, FileX2 } from 'lucide-react';
+import Link from 'next/link';
 
 export function EditNewsletter() {
   return (
@@ -32,7 +33,7 @@ export function DeleteNewsletter() {
       <Tooltip>
         <TooltipTrigger asChild>
           <Button className='rounded-full' size='icon' variant='default'>
-            <FileEditIcon className='w-4 h-4' />
+            <FileX2 className='w-4 h-4' />
             <span className='sr-only'>Delete</span>
           </Button>
         </TooltipTrigger>
@@ -46,18 +47,20 @@ export function DeleteNewsletter() {
 
 export function AddNewsletter() {
   return (
-    <TooltipProvider>
-      <Tooltip>
-        <TooltipTrigger asChild>
-          <Button className='rounded-full' size='lg' variant='default'>
-            <FilePlus className='w-4 h-4' />
-            <span className='sr-only'>Add</span>
-          </Button>
-        </TooltipTrigger>
-        <TooltipContent>
-          <p className='border p-1'>Add Newsletter</p>
-        </TooltipContent>
-      </Tooltip>
-    </TooltipProvider>
+    <Link href={'/create'}>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Button className='rounded-full' size='lg' variant='default'>
+              <FilePlus className='w-4 h-4' />
+              <span className='sr-only'>Add</span>
+            </Button>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p className='border p-1'>Add Newsletter</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+    </Link>
   );
 }
