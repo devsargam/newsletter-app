@@ -5,6 +5,7 @@ import {
   AddNewsletter,
   DeleteNewsletter,
   EditNewsletter,
+  ShareNewsletter,
 } from './NewsletterToolTip';
 
 interface NewsletterProps {
@@ -38,6 +39,7 @@ export function Newsletter({ id, content, createdAt, title }: NewsletterProps) {
         <div className='gap-2 flex'>
           <EditNewsletter />
           <DeleteNewsletter id={id} />
+          <ShareNewsletter id={id} />
         </div>
       </div>
     </div>

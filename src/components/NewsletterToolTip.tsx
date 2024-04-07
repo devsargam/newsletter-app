@@ -6,9 +6,11 @@ import {
   TooltipTrigger,
 } from '@radix-ui/react-tooltip';
 import { Button } from './ui/button';
-import { FileEditIcon, FilePlus, FileX2 } from 'lucide-react';
+import { FileEditIcon, FilePlus, FileX2, Share2 } from 'lucide-react';
 import Link from 'next/link';
 import { deleteNewsletter } from '@/actions';
+import { useCopy } from '@/hooks';
+import { useToast } from './ui/use-toast';
 
 export function EditNewsletter() {
   return (
@@ -47,6 +49,37 @@ export function DeleteNewsletter({ id }: { id: string }) {
         </TooltipTrigger>
         <TooltipContent>
           <p className='border p-1'>Delete Newsletter</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
+  );
+}
+
+export function ShareNewsletter({ id }: { id: string }) {
+  const { toast } = useToast();
+
+  return (
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            className='rounded-full'
+            size='icon'
+            variant='default'
+            onClick={async () => {
+              const text = `${location.origin}/${id}`;
+              await navigator.clipboard.writeText(text);
+              toast({
+                title: `Copied: ${text} to clipboard`,
+              });
+            }}
+          >
+            <Share2 className='w-4 h-4' />
+            <span className='sr-only'>Share</span>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent>
+          <p className='border p-1'>Share Newsletter</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
