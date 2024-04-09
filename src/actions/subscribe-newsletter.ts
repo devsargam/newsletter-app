@@ -1,5 +1,6 @@
 'use server';
 import db from '@/db';
+import { resend } from '@/lib/resend';
 import { getServerSession } from 'next-auth';
 import { revalidatePath } from 'next/cache';
 
@@ -37,6 +38,13 @@ export async function subscribeNewsletter(id: string, email: string) {
           },
         },
       },
+    });
+
+    await resend.emails.create({
+      from: 'noreply@resend.dev',
+      to: email,
+      subject: 'hello world',
+      react: `<a href="${process.env.BASE_URL}/verify">Click Here To Verify</a>`,
     });
 
     revalidatePath('/');
