@@ -28,7 +28,7 @@ export async function subscribeNewsletter(id: string, email: string) {
         description: 'You are already subscribed to this newsletter!',
       };
 
-    await db.emailSubscriber.create({
+    const newSub = await db.emailSubscriber.create({
       data: {
         email,
         // subscribedToId: id,
@@ -45,6 +45,9 @@ export async function subscribeNewsletter(id: string, email: string) {
       to: email,
       subject: 'hello world',
       react: `<a href="${process.env.BASE_URL}/verify">Click Here To Verify</a>`,
+      headers: {
+        'List-Unsubscribe': `<${process.env.BASE_URL}/unsubscribe/${newSub.id}>`,
+      },
     });
 
     revalidatePath('/');
