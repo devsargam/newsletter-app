@@ -13,6 +13,20 @@ export async function subscribeNewsletter(id: string, email: string) {
     };
   }
   try {
+    if (
+      await db.emailSubscriber.findFirst({
+        where: {
+          subscribedToId: id,
+          email: email,
+        },
+      })
+    )
+      return {
+        error: true,
+        message: 'Error!',
+        description: 'You are already subscribed to this newsletter!',
+      };
+
     await db.emailSubscriber.create({
       data: {
         email,
@@ -29,7 +43,7 @@ export async function subscribeNewsletter(id: string, email: string) {
     return {
       error: false,
       message: 'Success!',
-      description: 'The email has been subscribed',
+      description: 'The email has been subscribed.',
     };
   } catch (e) {
     console.log(e);

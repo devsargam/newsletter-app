@@ -51,13 +51,16 @@ model Newsletter {
 // }
 
 model EmailSubscriber {
-  id      String  @id @default(uuid())
-  email   String
-  opened  Boolean @default(false)
-  clicked Boolean @default(false)
+  id         String  @id @default(uuid())
+  email      String
+  opened     Boolean @default(false)
+  clicked    Boolean @default(false)
+  isVerified Boolean @default(false)
 
   subscribedTo   Newsletter? @relation(fields: [subscribedToId], references: [id])
   subscribedToId String
+
+  @@unique([email, subscribedToId])
 }
 
 model Analytics {
