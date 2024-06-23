@@ -1,5 +1,5 @@
-import { MainNav } from '@/components/NavBar';
 import { CreateNewsletter } from '@/components/create-newsletter';
+import { MainNav } from '@/components/nav-bar';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 

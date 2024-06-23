@@ -1,5 +1,5 @@
-import { MainNav } from '@/components/NavBar';
-import { SigninForm } from '@/components/SigninForm';
+import { MainNav } from '@/components/nav-bar';
+import { SigninForm } from '@/components/signin-form';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 

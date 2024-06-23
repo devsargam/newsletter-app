@@ -4,7 +4,7 @@
  */
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
-import { CreateNewsletter, Newsletter } from './Newsletter';
+import { CreateNewsletter, Newsletter } from './newsletter';
 import db from '@/db';
 
 interface INewsletter {

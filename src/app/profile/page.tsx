@@ -1,4 +1,4 @@
-import { MainNav } from '@/components/NavBar';
+import { MainNav } from '@/components/nav-bar';
 import { Profile } from '@/components/profile-page';
 
 export default function ProfilePage() {

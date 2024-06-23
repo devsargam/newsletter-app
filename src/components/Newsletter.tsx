@@ -6,7 +6,7 @@ import {
   DeleteNewsletter,
   EditNewsletter,
   ShareNewsletter,
-} from './NewsletterToolTip';
+} from './newsletter-tool-tip';
 
 interface NewsletterProps {
   title: string;

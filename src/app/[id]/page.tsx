@@ -1,4 +1,4 @@
-import { MainNav } from '@/components/NavBar';
+import { MainNav } from '@/components/nav-bar';
 import { SubscribeNewsletter } from '@/components/subscribe-newsletter';
 import prisma from '@/db';
 import { getServerSession } from 'next-auth';
