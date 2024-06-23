@@ -1,4 +1,3 @@
-version: '3'
 services:
   db:
     image: postgres:9.6
@@ -6,7 +5,7 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: db
+      POSTGRES_DB: newsletter
     ports:
       - 5432:5432
     volumes:
