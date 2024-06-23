@@ -1,9 +1,9 @@
 'use client';
 
+import { subscribeNewsletter } from '@/actions';
 import { useState } from 'react';
 import { Button } from './ui/button';
 import { Input } from './ui/input';
-import { subscribeNewsletter } from '@/actions';
 import { useToast } from './ui/use-toast';
 
 type EmailInputProps = {

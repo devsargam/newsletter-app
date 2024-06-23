@@ -1,7 +1,7 @@
 'use server';
-import { z } from 'zod';
 import db from '@/db';
 import { revalidatePath } from 'next/cache';
+import { z } from 'zod';
 
 interface CreateNewsletterReturn {
   message: string;

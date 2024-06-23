@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
 import { cn } from '@/lib/utils';
+import { Home } from 'lucide-react';
 import { getServerSession } from 'next-auth';
 import { Logout } from './Logout';
-import { Home } from 'lucide-react';
 
 export async function MainNav({
   className,

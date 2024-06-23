@@ -1,8 +1,8 @@
 'use client';
 
 import { signOut } from 'next-auth/react';
-import { Button } from './ui/button';
 import { useRouter } from 'next/navigation';
+import { Button } from './ui/button';
 import { useToast } from './ui/use-toast';
 
 export function Logout() {

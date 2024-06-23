@@ -1,12 +1,12 @@
-import Image from 'next/image';
-import { Separator } from './ui/separator';
 import { timeAgo } from '@/utils';
+import Image from 'next/image';
 import {
   AddNewsletter,
   DeleteNewsletter,
   EditNewsletter,
   ShareNewsletter,
 } from './newsletter-tool-tip';
+import { Separator } from './ui/separator';
 
 interface NewsletterProps {
   title: string;

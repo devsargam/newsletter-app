@@ -1,6 +1,6 @@
-import { NextResponse } from 'next/server';
 import db from '@/db';
 import { PrismaClientKnownRequestError } from '@prisma/client/runtime/library';
+import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
   try {

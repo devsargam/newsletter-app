@@ -1,7 +1,5 @@
 import { MainNav } from '@/components/nav-bar';
-import { SubscribeNewsletter } from '@/components/subscribe-newsletter';
 import prisma from '@/db';
-import { getServerSession } from 'next-auth';
 import { notFound } from 'next/navigation';
 
 export default async function UnsubscribePage({

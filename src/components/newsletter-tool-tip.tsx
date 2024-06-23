@@ -1,15 +1,14 @@
 'use client';
+import { deleteNewsletter } from '@/actions';
 import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
   TooltipTrigger,
 } from '@radix-ui/react-tooltip';
-import { Button } from './ui/button';
 import { FileEditIcon, FilePlus, FileX2, Share2 } from 'lucide-react';
 import Link from 'next/link';
-import { deleteNewsletter } from '@/actions';
-import { useCopy } from '@/hooks';
+import { Button } from './ui/button';
 import { useToast } from './ui/use-toast';
 
 export function EditNewsletter() {
